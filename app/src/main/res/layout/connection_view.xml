@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/appimg"
+        android:layout_width="48dp"
+        android:layout_height="40dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/appname"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_toEndOf="@id/appimg"
+        android:textStyle="bold"
+
+        android:text="AppName" />
+
+    <TextView
+        android:id="@+id/protocol"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_toEndOf="@id/appimg"
+        android:layout_below="@id/appname"
+        android:text="Protocol" />
+    <TextView
+        android:id="@+id/sni"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_toEndOf="@id/appimg"
+        android:layout_below="@id/protocol"
+        android:text="SNI" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="40dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="30dp"
+        android:layout_toEndOf="@id/protocol"
+        android:layout_below="@id/appname"
+
+        android:gravity="right"
+        android:text="Active" />
+</RelativeLayout>
