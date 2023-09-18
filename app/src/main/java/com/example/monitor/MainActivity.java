@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.VpnService;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,21 @@ public class MainActivity extends AppCompatActivity {
                 Intent scanpage;
                 scanpage = new Intent(MainActivity.this, ScanningActivity.class);
                 startActivity(scanpage);
+            }
+        });
+
+
+
+        Button startVpnButton = findViewById(R.id.startVpnButton);
+        startVpnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vpnIntent = VpnService.prepare(MainActivity.this);
+                if (vpnIntent != null) {
+                    startActivityForResult(vpnIntent, 0);
+                } else {
+                    onActivityResult(0, RESULT_OK, null);
+                }
             }
         });
 

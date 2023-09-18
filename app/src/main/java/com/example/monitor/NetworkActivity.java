@@ -5,8 +5,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +22,25 @@ public class NetworkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_network);
         TextView start;
         start = findViewById(R.id.cardsText);
+        
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Check if the device is connected to a network
+                if (NetUtil.isNetworkConnected(getApplicationContext())) {
+                    // The device is connected to a network
+                } else {
+                    // The device is not connected to a network
+                    Toast.makeText(NetworkActivity.this, "You are offline!!", Toast.LENGTH_SHORT).show();
+                }
 
+                Intent startvpn;
+                startvpn = new Intent(NetworkActivity.this, MyVpnService.class);
+                startService(startvpn);
+
+            }
+        });
+        
         List items = new ArrayList<Connections>();
 
         //Dummy for now
