@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
         android:padding="10dp"
-        android:orientation="vertical">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/descr"
@@ -25,25 +31,17 @@
             android:id="@+id/gotoNetwork"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
 
             android:layout_marginBottom="5dp"
-            android:text="Monitor Your Network Traffic" />
-
-        <Button
-            android:id="@+id/startVpnButton"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="150dp"
-            android:layout_marginBottom="50dp"
-            android:text="Start VPN" />
+            android:text="Monitor Your Network " />
 
         <Button
             android:id="@+id/gotoScanning"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
             android:layout_gravity="center_horizontal"
             android:text="Scan Suspicious apps/files" />
 

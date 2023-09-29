@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.VpnService;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,12 +22,13 @@ public class NetworkActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_network);
-        TextView start;
-        start = findViewById(R.id.cardsText);
-        
-        start.setOnClickListener(new View.OnClickListener() {
+
+
+
+        TextView startVpn = findViewById(R.id.startVpn);
+        startVpn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 // Check if the device is connected to a network
                 if (NetUtil.isNetworkConnected(getApplicationContext())) {
                     // The device is connected to a network
@@ -38,6 +41,12 @@ public class NetworkActivity extends AppCompatActivity {
                 startvpn = new Intent(NetworkActivity.this, MyVpnService.class);
                 startService(startvpn);
 
+                Intent vpnIntent = VpnService.prepare(NetworkActivity.this);
+                if (vpnIntent != null) {
+                    startActivityForResult(vpnIntent, 0);
+                } else {
+                    onActivityResult(0, RESULT_OK, null);
+                }
             }
         });
         
